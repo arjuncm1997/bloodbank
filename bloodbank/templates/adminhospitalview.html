@@ -1,0 +1,68 @@
+{% extends 'admin.html' %}
+{% block content %}
+
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="page-header">
+                    <h1><small class="pull-right"></small> HOSPITALS </h1>
+                  </div> 
+                   <div class="comments-list">
+                      {% for hospital in hospital %}
+
+
+                       <div class="media">
+                           
+                              
+                            <div class="media-body">
+                                    <h2> {{hospital.id}}</h2>
+                                    <span class="image-block">
+                                            <a class="image-zoom" href="static/picture/{{hospital.image}}" rel="prettyPhoto[gallery]" style="height: 250px;width: 335px;">
+                                               <figure>
+                                                  <img src="static/picture/{{hospital.image}}" class="img-fluid" alt="" style="height: 50px;width: 50px;">
+                                                  <figcaption>
+                                                     
+                                                  </figcaption>
+                                               </figure>
+                                            </a>
+                                         </span>
+                                        <h3></h3>
+                              <h3 class="media-heading user_name">Hospital Name: {{hospital.name}}
+                              </h3>
+                              <h5>Place: {{hospital.place}}</h5>
+                              <h5>Pincode: {{hospital.pincode}}</h5> 
+                              <h5>Phone: {{hospital.phone}}</h5> 
+                              <h5>Email: {{hospital.email}}</h5> 
+                              <h5>Available Blood Group: {{hospital.availgroup}}</h5>
+                              <h5>Required Blood Group: {{hospital.requiredgroup}}</h5>
+                              <td class="text-center"><a class='btn btn-info btn-xs' href="/hospitalupdate/{{hospital.id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/deletehospital/{{hospital.id}}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+               
+                            </div>
+                          </div>
+                    {% endfor %}
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+        <style>
+        
+        .user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+        </style>
+
+{% endblock %}

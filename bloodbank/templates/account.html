@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Medic Medical Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Medic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href="../static/css/bootstrap.css">
+	<!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="../static/css/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<!-- //Web-Fonts -->
+
+</head>
+
+<body>
+	<!-- header -->
+	<header>
+		<!-- top-bar -->
+		
+	</header>
+	<!-- //top-bar -->
+
+	<!-- header 2 -->
+	<div id="home">
+		<!-- navigation -->
+		<div class="main-top py-1">
+			<nav class="navbar navbar-expand-lg navbar-light fixed-navi">
+				<div class="container">
+					<!-- logo -->
+					<h1>
+						<a class="navbar-brand font-weight-bold font-italic" href="index.html">
+							<span>Blood</span>Bank
+						</a>
+					</h1>
+					<!-- //logo -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-lg-auto">
+							<li class="nav-item active mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="/uindex">Home
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+							
+							
+				
+                            <li class="nav-item mx-lg-3 my-lg-0 my-3">
+                                    <a class="nav-link" href="#">Notification</a>
+                            </li>
+							
+							<li class="nav-item mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="/account/{{current_user.id}}">{{current_user.name}}</a>
+							</li>
+						</ul>
+						<!-- logout -->
+						<a href="/logout" class="btn btn-info btn-lg" style="background-color: black;border-color: black;">
+							<span class="glyphicon glyphicon-log-out"></span> Log out
+						  </a>
+
+						<!-- //login -->
+					</div>
+				</div>
+			</nav>
+		</div>
+
+	<div class="w3ls-welcome py-5"></div>
+		<div class="container py-xl-5 py-lg-3">
+			
+		</div>
+	</div>
+
+
+
+
+
+	
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+   
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+
+
+        
+        
+      
+
+
+	<div class="content-section" style="padding-right: 300px;padding-left: 200px;">
+		
+      <div class="media">
+        <img class="rounded-circle account-img" src="../static/picture/{{current_user.image}}" style="height: 130px;width: 130px;">
+        <div class="media-body">
+          <h1 class="account-heading" style="padding-left: 100px;font-size: 4.5rem;">   {{ current_user.name }}</h1>
+          <p class="text-secondary" style="padding-left: 100px;padding-top: 20px;">   {{ current_user.email }}</p>
+        </div>
+      </div>
+      <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 10px; "> 
+		{{ form.hidden_tag() }}
+		
+        <fieldset class="form-group" >
+				<table style="font-size: 1.5rem;line-height: 2;    font-weight: 500;">
+					<tr><th>
+			<legend class="border-bottom mb-4" style="font-size:2.5rem;">Account Info</legend>
+		</th>
+		</tr>
+			<tr style="font-size: 1.5rem;"><td ><div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div></td>
+          <td> <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+				</div>
+			</td>
+			</tr>
+			<tr><td>
+            <div class="form-group">
+                    {{ form.age.label(class="form-control-label") }}
+                    {% if form.age.errors %}
+                        {{ form.age(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.age(class="form-control form-control-lg") }}
+                    {% endif %}
+				</div></td>
+				<td>
+
+				
+                <div class="form-group">
+                        {{ form.address.label(class="form-control-label") }}
+                        {% if form.address.errors %}
+                            {{ form.address(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.address(class="form-control form-control-lg") }}
+                        {% endif %}
+					</div>
+				</td>
+				</tr>
+				<tr><td>
+
+				
+                    <div class="form-group">
+                            {{ form.city.label(class="form-control-label") }}
+                            {% if form.city.errors %}
+                                {{ form.city(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.city.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.city(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div></td>
+						<td>
+
+						
+                        <div class="form-group">
+                                {{ form.state.label(class="form-control-label") }}
+                                {% if form.state.errors %}
+                                    {{ form.state(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.state.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.state(class="form-control form-control-lg") }}
+                                {% endif %}
+							</div>
+						</td>
+						</tr>
+						<tr><td>
+                            <div class="form-group">
+                                    {{ form.mobile.label(class="form-control-label") }}
+                                    {% if form.mobile.errors %}
+                                        {{ form.mobile(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.mobile.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.mobile(class="form-control form-control-lg") }}
+                                    {% endif %}
+								</div></td>
+								<td>
+
+								
+                                <div class="form-group">
+                                        {{ form.picture.label() }}
+                                        {{ form.picture(class="form-control-file") }}
+                                        {% if form.picture.errors %}
+                                            {% for error in form.picture.errors %}
+                                                <span class="text-danger">{{ error }}</span></br>
+                                            {% endfor %}
+                                        {% endif %}
+									</div> </td>
+								</tr>
+							
+								</table>
+       
+        <div class="form-group" >
+            {{ form.submit(class="btn btn-outline-info") }}
+            <small class="text-muted ml-2" style="font-size: 1.2rem;">
+                <a href="/changepassword">Change Password?</a>
+            </small>
+        </div>
+    </fieldset>
+    </form>
+    </div>
+
+
+</body>
+
+
+	
+
+
+	<!-- contact -->
+
+	<footer>
+		<div class="w3ls-footer-grids pt-sm-4 pt-3">
+			<div class="container py-xl-5 py-lg-3">
+				<div class="row">
+					<div class="col-md-4 w3l-footer">
+						<h2 class="mb-sm-3 mb-2">
+							<a href="index.html" class="text-white font-italic font-weight-bold">
+								<span>Blood</span>Bank
+								<i class="fas fa-syringe ml-2"></i>
+							</a>
+						</h2>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+							aperiam,
+							eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					</div>
+					<div class="col-md-4 w3l-footer my-md-0 my-4">
+						<h3 class="mb-sm-3 mb-2 text-white">Address</h3>
+						<ul class="list-unstyled">
+							<li>
+								<i class="fas fa-location-arrow float-left"></i>
+								<p class="ml-4">The company name
+									<span>Lorem ipsum dolor,</span>New York,Morris Park. </p>
+								<div class="clearfix"></div>
+							</li>
+							<li class="my-3">
+								<i class="fas fa-phone float-left"></i>
+								<p class="ml-4">1234567890</p>
+								<div class="clearfix"></div>
+							</li>
+							<li>
+								<i class="far fa-envelope-open float-left"></i>
+								<a href="mailto:info@example.com" class="ml-3">mail@example.com</a>
+								<div class="clearfix"></div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 w3l-footer">
+						<h3 class="mb-sm-3 mb-2 text-white">Quick Links</h3>
+						<div class="nav-w3-l">
+							<ul class="list-unstyled">
+								<li>
+									<a href="/uindex">Home</a>
+								</li>
+								<li class="mt-2">
+									<a href="/uindex">About Us</a>
+								</li>
+								<li class="mt-2">
+									<a href="/uindex">Gallery</a>
+								</li>
+								<li class="mt-2">
+									<a href="contact.html">Contact Us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="border-top mt-5 pt-lg-4 pt-3 pb-lg-0 pb-3 text-center">
+					<p class="copy-right-grids mt-lg-1">© 2018 Medic. All Rights Reserved | Design by
+						<a href="https://w3layouts.com/" target="_blank">W3layouts</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+<style>
+
+.form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-append>.btn, .input-group-lg>.input-group-append>.input-group-text, .input-group-lg>.input-group-prepend>.btn, .input-group-lg>.input-group-prepend>.input-group-text {
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+.btn-outline-info{
+	font-size: 1.8rem;
+}
+
+</style>
+
+	<!-- Js files -->
+	<!-- JavaScript -->
+	<script src="../static/js/jquery-2.2.3.min.js"></script>
+	<!-- Default-JavaScript-File -->
+
+	<!-- banner slider -->
+	<script src="../static/js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<!-- //banner slider -->
+
+	<!-- fixed navigation -->
+	<script src="../static/js/fixed-nav.js"></script>
+	<!-- //fixed navigation -->
+
+	<!-- smooth scrolling -->
+	<script src="../static/js/SmoothScroll.min.js"></script>
+	<!-- move-top -->
+	<script src="../static/js/move-top.js"></script>
+	<!-- easing -->
+	<script src="../static/js/easing.js"></script>
+	<!--  necessary snippets for few javascript files -->
+	<script src="../static/js/medic.js"></script>
+
+	<script src="../static/js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+<!-- Gallery-js -->
+<script src="../static/js/modernizr.custom.97074.js"></script>
+<script src="../static/js/jquery.hoverdir.js"></script>
+<script>
+	$(function () {
+
+		$(' #da-thumbs > li ').each(function () {
+			$(this).hoverdir();
+		});
+
+	});
+</script>
+
+<script src="../static/js/jquery.chocolat.js"></script>
+<link rel="stylesheet" href="../static/css/chocolat.css" type="text/css">
+<!--light-box-files -->
+<script>
+	$(function () {
+		$('.da-thumbs a').Chocolat();
+	});
+</script>
+<!-- Gallery-js -->
+	<!-- //Js files -->
+
+</body>
+
+</html>

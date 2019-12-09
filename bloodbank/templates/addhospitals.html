@@ -1,0 +1,182 @@
+{% extends 'admin.html' %}
+{% block content %}
+
+<head>
+    <style>
+    #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+    </style>  
+
+</head>
+<form method="POST" action="/register" enctype="multipart/form-data">
+  <h2 align="center">ADD HOSPITALS</h2>
+  <div class="well1 white">
+    <form class="form-floating ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url ng-valid-pattern" novalidate="novalidate" ng-submit="submit()">
+        {{form.hidden_tag()}}
+        <fieldset class="form-group" >
+          {{ form.name.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="name">
+            
+               {% if form.name.errors %}
+                  {{ form.name(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.name(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.place.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="place">
+            
+               {% if form.place.errors %}
+                  {{ form.place(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.place.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.place(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.pincode.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="pincode">
+            
+               {% if form.pincode.errors %}
+                  {{ form.pincode(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.pincode.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.pincode(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.mobile.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="mobile">
+            
+               {% if form.mobile.errors %}
+                  {{ form.mobile(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.mobile.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.mobile(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.email.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="email">
+            
+               {% if form.email.errors %}
+                  {{ form.email(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.email(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.agroup.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="agroup">
+            
+               {% if form.agroup.errors %}
+                  {{ form.agroup(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.agroup.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.agroup(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+          {{ form.rgroup.label(class="form-control-label") }}
+            <div class="form-group" type="text" style="border: 1px solid #b9adad !important" name="rgroup">
+            
+               {% if form.rgroup.errors %}
+                  {{ form.rgroup(class="form-control1 ng-invalid ng-invalid-required ng-touched") }}
+                  <div class="invalid-feedback" >
+                  {% for error in form.rgroup.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                  </div>
+                  {% else %}
+              {{ form.rgroup(class="form-control form-control-lg") }}
+             {% endif %}
+          </div>
+
+
+    <div class="form-group">
+            {{ form.pic.label() }}
+            {{ form.pic(class="form-control-file") }}
+            {% if form.pic.errors %}
+                {% for error in form.pic.errors %}
+                    <span>{{ error }}</span></br>
+                {% endfor %}
+            {% endif %}
+      </div>
+
+      <div class="form-group">
+      {{ form.submit(class="btn btn-outline-info") }}
+      {% if action %}
+     <button type="submit" class="btn btn-primary" value="" onclick="myFunction()">SAVE</button>
+      {% endif %}
+      </div>
+  </div>
+  </fieldset>
+</form>
+<br>
+              
+<script>
+    function myFunction() {
+      var txt;
+      if (confirm("To confirm press (ok)")) {
+        txt = "You pressed OK!";
+      } else {
+        txt = "You pressed Cancel!";
+      }
+      document.getElementById("demo").innerHTML = txt;
+    }
+</script>
+
+{% endblock %}

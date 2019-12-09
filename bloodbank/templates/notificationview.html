@@ -1,0 +1,32 @@
+{% extends 'admin.html'%}
+{% block content %}
+
+<html>
+
+
+
+{% for noti in noti%}
+       
+
+    <table>
+                   
+            
+        <tr style="height: 60px; padding-top: 20px;font-size: 30px;" ><td> Notification {{noti.id}}</td>
+                                                                      <td><a href="/deletenotification/{{noti.id}}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+                <tr ><td> Message: {{noti.notification}}</td>
+
+                </tr>
+
+                <tr ><td> Mobile: {{noti.mobile}} </td></tr>
+                <tr> <td> place: {{noti.place}} </td></tr>
+
+  
+        </table>
+
+
+
+
+{% endfor %}
+</html>
+{% endblock %}
