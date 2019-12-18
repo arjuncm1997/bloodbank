@@ -4,7 +4,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Medic Medical Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
+	<title>Blood Bank</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -42,7 +42,17 @@
 	<!-- header -->
 	<header>
 		<!-- top-bar -->
-		
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		<!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+		{% if messages %}
+		  {% for category, message in messages %}
+			<div class="alert alert-{{ category }} alert-dismissible" role="alert" style="font-size: 1.5rem;">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<!-- <strong>Title</strong> --> {{ message }}
+			</div>
+		  {% endfor %}
+		{% endif %}
+	  {% endwith %}
 	</header>
 	<!-- //top-bar -->
 
@@ -80,11 +90,18 @@
                             <li class="nav-item mx-lg-3 my-lg-0 my-3">
                                     <a class="nav-link" href="/notificationuser">Notification</a>
                             </li>
+							
 							<li class="nav-item mx-lg-3 my-lg-0 my-3">
-								<a class="nav-link" href="#contact">Contact Us</a>
+								<a class="nav-link" href="#camp">Camps</a>
+							</li>
+							<li class="nav-item mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="/hospitalview">Hospitals</a>
 							</li>
 							<li class="nav-item mx-lg-3 my-lg-0 my-3">
 								<a class="nav-link" href="/account/{{current_user.id}}">{{current_user.name}}</a>
+							</li>
+							<li class="nav-item mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="#contact">Contact Us</a>
 							</li>
 						</ul>
 						<!-- logout -->
@@ -102,10 +119,10 @@
 	<!-- banner -->
 	<div class="slider">
 		<div class="callbacks_container">
-			<ul class="rslides callbacks callbacks1" id="slider4">
+			<ul class="rslides callbacks callbacks1" id="slider4" >
 				<li>
 					<div class="banner-top1">
-						<div class="banner-info_agile_w3ls">
+						<div class="banner-info_agile_w3ls" style="padding-top: 150px;">
 							<div class="container">
 								<h3>Welcome {{current_user.name}}</h3>
 								<p class="mt-3 mb-md-5 mb-3">   </p>
@@ -118,7 +135,7 @@
 				</li>
 				<li>
 					<div class="banner-top2">
-						<div class="banner-info_agile_w3ls">
+						<div class="banner-info_agile_w3ls" style="padding-top: 150px;">
 							<div class="container">
 								<h3>Welcome Users</h3>
 								<p class="mt-3 mb-md-5 mb-3">   </p>
@@ -131,7 +148,7 @@
 				</li>
 				<li>
 					<div class="banner-top3">
-						<div class="banner-info_agile_w3ls">
+						<div class="banner-info_agile_w3ls" style="padding-top: 150px;">
 							<div class="container">
 								<h3>The Hospital of the future, today</h3>
 								<p class="mt-3 mb-md-5 mb-3">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -151,7 +168,7 @@
 	<!-- middle section -->
 	<div class="w3ls-welcome py-5">
 		<div class="container py-xl-5 py-lg-3">
-			<div class="row">
+			<div class="row" style="padding-top: 20px;">
 				<div class="col-lg-5 welcome-right">
 					<img src="../static/images/b2.png" alt=" " class="img-fluid">
 				</div>
@@ -244,75 +261,54 @@
 
 
 	<!-- blog -->
-	<section class="blog py-lg-4 py-md-3 py-sm-3 py-3" id="blog"></section>
+	<section class="blog py-lg-4 py-md-3 py-sm-3 py-3" id="camp">
 	<div class="blog-w3ls py-5">
 		<div class="container py-xl-5 py-lg-3">
 			<div class="w3ls-titles text-center mb-5">
-				<h3 class="title text-white">Our Blog</h3>
+				<h3 class="title text-white">Comming Camps</h3>
 				<span>
 					<i class="fas fa-user-md text-white"></i>
 				</span>
 				<p class="mt-2 text-white">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
-			<div class="row package-grids mt-5">
-				<div class="col-md-4 pricing">
-					<div class="price-top">
-						<a href="single.html">
-							<img src="../static/images/blog1.jpg" alt="" class="img-fluid" />
+			<div class="row">
+				{% for camp in camp %}
+				<div class="col-md-4 pricing" style="padding-top: 20px;" >
+					<div class="price-top"  >
+						<a href="">
+							<img  src="/static/picture/{{camp.image}}" alt=""   class="img-fluid" style="width:390.98px;height:204px;">
 						</a>
-						<h3>13
-							<span>August</span>
+						<h3>{{camp.date}}
 						</h3>
 					</div>
 					<div class="price-bottom p-4">
-						<h4 class="text-dark mb-3">Sit voluptatem accusantium doloremque</h4>
-						<a href="single.html">
-							<i class="fas fa-user mr-2"></i>Posted by accusantium</a>
+						<h4 class="text-dark mb-3">{{camp.description}}</h4>
+						
+							<i class="fas fa-phone" style="font-size: 18px;">: {{camp.mobile}}</i>
+							<br>
+							
+								<i class="fas fa-map-marker" style="font-size: 18px;">: {{camp.place}}</i>
 					</div>
+					
 				</div>
-				<div class="col-md-4 pricing my-md-0 my-5">
-					<div class="price-top">
-						<a href="single.html">
-							<img src="../static/images/blog2.jpg" alt="" class="img-fluid" />
-						</a>
-						<h3>24
-							<span>August</span>
-						</h3>
-					</div>
-					<div class="price-bottom p-4">
-						<h4 class="text-dark mb-3">Sit voluptatem accusantium doloremque</h4>
-						<a href="single.html">
-							<i class="fas fa-user mr-2"></i>Posted by accusantium</a>
-					</div>
-				</div>
-				<div class="col-md-4 pricing">
-					<div class="price-top">
-						<a href="single.html">
-							<img src="../static/images/blog3.jpg" alt="" class="img-fluid" />
-						</a>
-						<h3>30
-							<span>August</span>
-						</h3>
-					</div>
-					<div class="price-bottom p-4">
-						<h4 class="text-dark mb-3">Sit voluptatem accusantium doloremque</h4>
-						<a href="single.html">
-							<i class="fas fa-user mr-2"></i>Posted by accusantium</a>
-					</div>
-				</div>
+				{%endfor%}
+				
 			</div>
 		</div>
 	</div>
 </div>
 </section>
 
+
+
 	<!-- contact -->
 
 	<section class="contact py-lg-4 py-md-3 py-sm-3 py-3" id="contact">
 			<div class="col-lg-7 contact-right-w3l" style="font-size: 1.4rem;">
-				<center>
+				
 				<h5 class="title-w3 text-center mb-5" style="width: 1167px;">Get In Touch</h5>
-				<form action="/feedback" method="POST" style="width: 1167px;">
+				<center>
+				<form action="" method="POST" style="width: 1050px; padding-left: 180px;">
 					<div class="d-flex space-d-flex">
 						<div class="form-group grid-inputs">
 							<input type="text" class="name form-control" name="Name" placeholder="Name" required="">
@@ -414,6 +410,9 @@
 
 	<!-- //footer -->
 </html>
+
+
+
 
 	<!-- Js files -->
 	<!-- JavaScript -->

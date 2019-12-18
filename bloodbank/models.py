@@ -2,7 +2,6 @@ from bloodbank import db,login_manager, app
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
-
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -67,4 +66,11 @@ class Notification(db.Model):
     notification = db.Column(db.String(200))
     mobile = db.Column(db.Integer)
     place = db.Column(db.String(200))
+class Campadd(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date= db.Column(db.String(50))
+    description= db.Column(db.String(50))
+    mobile = db.Column(db.Integer)
+    place = db.Column(db.String(200))
+    image = db.Column(db.String(20), nullable=False, default='default.jpg')
 

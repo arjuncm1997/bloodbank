@@ -2,14 +2,13 @@ import os
 from flask import Flask, flash, session
 from flask import render_template, flash, redirect, request, abort, url_for
 from bloodbank import app,db, bcrypt,  mail
-from bloodbank.forms import Addimage,Addhospitals,Register,Feedback, LoginForm,Accountform,Accountform1,Changepassword, Requestresetform
-from bloodbank.models import Gallery,Feedback, Hospitals,User,Notification
+from bloodbank.forms import Addimage,Addhospitals,Register,Feedback, LoginForm,Accountform,Accountform1,Changepassword, Requestresetform, Camp
+from bloodbank.models import Gallery,Feedback, Hospitals,User,Notification, Campadd
 from flask_login import login_user, current_user, logout_user, login_required
 from PIL import Image
 from random import randint
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
-
     
 @app.route('/',methods=['GET', 'POST'])
 @app.route('/index',methods=['GET', 'POST'])
@@ -38,7 +37,8 @@ def registeration():
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect('/')
     else:
-        flash('Registeration unsuccuessful!!!')
+        flash('Registeration unsuccuessful!!! ')
+        return redirect('/')
     return render_template('index.html',title='Register', form1=form1,form3=form3,form2=form2)
 
 
@@ -62,10 +62,7 @@ def login():
             login_user(user1, remember=form1.remember.data)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/admin')
-        if user1 and bcrypt.check_password_hash(user1.password, form1.password.data):
-            login_user(user1, remember=form1.remember.data)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect('/admin')
+            
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     else:
@@ -117,8 +114,9 @@ def uindex():
         except:
             return 'not add'  
     else:
+        camp=Campadd.query.all()
         gallery=Gallery.query.all()
-        return render_template('uindex.html',gallery=gallery)
+        return render_template('uindex.html',gallery=gallery,camp=camp)
 
 
 @app.route('/admin')
@@ -458,6 +456,76 @@ def notificationuser():
 
 
 @app.route('/userview')
+@login_required
 def userview():
     user=User.query.filter_by(usertype='user').all()
     return render_template('userview.html',user=user)
+
+
+
+
+@app.route('/campadd',methods=['GET', 'POST'])
+@login_required
+def campadd():
+    form = Camp()
+    if form.validate_on_submit():
+        if form.pic.data:
+            pic = save_picture(form.pic.data)
+            image = pic
+        camp =Campadd(date=form.date.data,description=form.desc.data,mobile=form.mobile.data,place=form.place.data,image=image)
+        db.session.add(camp)
+        db.session.commit()
+        flash('image added')
+        return redirect('/campview')
+
+    else:
+        return render_template('campadd.html',form=form)
+    
+@app.route('/campview')
+@login_required
+def campview():
+    camp= Campadd.query.all()
+    return render_template('campview.html',camp=camp)
+
+
+@app.route("/deletecamp/<int:id>")
+@login_required
+def deletecamp(id):
+    camp=Campadd.query.get_or_404(id)
+    db.session.delete(camp)
+    db.session.commit()
+    return redirect('/campview')
+
+
+@app.route("/campupdate/<int:id>", methods=['GET', 'POST'])
+@login_required
+def campupdate(id):
+    camp = Campadd.query.get_or_404(id)
+    form = Camp()
+    if form.validate_on_submit():
+        if form.pic.data:
+            picture_file = save_picture(form.pic.data)
+            hospital.image = picture_file
+        camp.date = form.date.data
+        camp.description=form.desc.data
+        camp.mobile=form.mobile.data
+        camp.place=form.place.data
+        db.session.commit()
+        flash('camp has been updated!', 'success')
+        return redirect('/campview')
+    elif request.method == 'GET':
+        form.date.data = camp.date
+        form.desc.data= camp.description
+        form.mobile.data= camp.mobile
+        form.place.data= camp.place
+    image_file = url_for('static', filename='picture/' + camp.image)
+    return render_template('campupdate.html',form=form)
+
+
+
+@app.route('/hospitalview')
+@login_required
+def hospitalview():
+    hosp=Hospitals.query.all()
+    return render_template('hospitalview.html',hosp=hosp)
+    

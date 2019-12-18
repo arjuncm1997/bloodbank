@@ -4,20 +4,12 @@
 <html lang="zxx">
 
 <head>
-	<title>Medic Medical Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
+	<title>Blood Bank</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
 	<meta name="keywords" content="Medic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
+	
 	<!--// Meta tag Keywords -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- Custom-Files -->
@@ -74,11 +66,11 @@
 							
 				
                             <li class="nav-item mx-lg-3 my-lg-0 my-3">
-                                    <a class="nav-link" href="#">Notification</a>
-							</li>
-							<li class="nav-item mx-lg-3 my-lg-0 my-3">
-								<a class="nav-link" href="/hospitalview">Hospitals</a>
-						</li>
+                                    <a class="nav-link" href="/notificationuser">Notification</a>
+                            </li>
+                            <li class="nav-item mx-lg-3 my-lg-0 my-3">
+                                    <a class="nav-link" href="#">Hospitals</a>
+                            </li>
 							
 							<li class="nav-item mx-lg-3 my-lg-0 my-3">
 								<a class="nav-link" href="/account/{{current_user.id}}">{{current_user.name}}</a>
@@ -101,35 +93,77 @@
 		</div>
 	</div>
 
+<!---->
+
+
+<div class="box" >
+    <div class="container">
+     	<div class="row">
+            {% for hosp in hosp %}
+			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                   
+					<div class="box-part text-center" style="background-color: rgb(247, 189, 189);
+					border-radius:0;padding:60px 10px;margin:30px 0px;">
+                        
+                        <span class="image-block">
+                            <a class="image-zoom" href="static/picture/{{hosp.image}}" rel="prettyPhoto[gallery]" style="height: 250px;width: 335px;">
+                               <figure>
+                                  <img src="static/picture/{{hosp.image}}" class="img-fluid" alt="" style="height: 70px;width: 70px;">
+                                  <figcaption>
+                                     
+                                  </figcaption>
+                               </figure>
+                            </a>
+                         </span>
+                     
+						<div class="title">
+                            <h3 style="font-size: 40px;">{{hosp.name}}</h3>
+						</div>
+                    
+						<div class="text" style="font-size: 1.5rem; padding-top: 10px;">
+                            Email: {{hosp.email}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Phone: {{hosp.phone}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Place: {{hosp.place}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Pincode: {{hosp.pincode}}
+						</div>
+                        <div style="color: red;font-size: 1.5rem; padding-top: 20px;">
+
+                            Available Blood Group: {{hosp.availgroup}}
+                        </div>
+                        <div style="color: red;font-size: 1.5rem;">
+
+                            Required Blood Group: {{hosp.requiredgroup}}
+                        </div>
+						<!-- <a href="#">Learn More</a> -->
+                      
+                     </div>
+                     
+				</div>	 
+				
+                {%endfor%}
+		
+		</div>		
+    </div>
+</div>
 
 
 
 
-	
 
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-   
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-
-</head>
+<!---->
 
 
-{% for noti in noti %}
-	
 
 
-		<li style="font-size:30px;padding-left: 50px;color: rgb(216, 34, 34);">{{noti.notification}}</li>	
-		<ul class="fa fa-phone" style="font-size:18px;padding-left: 95px;padding-top: 18px;color:black;"> : {{noti.mobile}}</ul><br>
-			<ul class= "fas fa-map-marker"style="font-size:18px;padding-left: 95px;padding-top: 18px;color: black;padding-bottom:20px;"> : {{noti.place}}</ul>
 
-{% endfor%}
-	<!-- contact -->
+
+
 
 	<footer>
 		<div class="w3ls-footer-grids pt-sm-4 pt-3">
@@ -196,20 +230,7 @@
 		</div>
 	</footer>
 	<!-- //footer -->
-<style>
 
-.form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-append>.btn, .input-group-lg>.input-group-append>.input-group-text, .input-group-lg>.input-group-prepend>.btn, .input-group-lg>.input-group-prepend>.input-group-text {
-    padding: .5rem 1rem;
-    font-size: 2rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-}
-
-.btn-outline-info{
-	font-size: 1.8rem;
-}
-
-</style>
 
 	<!-- Js files -->
 	<!-- JavaScript -->

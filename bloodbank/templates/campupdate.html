@@ -1,0 +1,78 @@
+{% extends 'admin.html'%}
+{% block content %}
+<html>
+<form action="" method="POST" enctype="multipart/form-data" style="width: 1167px; padding-top: 20px;">
+    {{ form.hidden_tag() }}
+        <div class="form-group" style="width: 700px;">
+            {{ form.date.label(class="form-control-label") }}
+            {% if form.date.errors %}
+                {{ form.date(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.date.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.date(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+
+    <div class="form-group" style="width: 700px;">
+        
+        {{ form.desc.label(class="form-control-label") }}
+        {% if form.desc.errors %}
+            {{ form.desc(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.desc.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.desc(class="form-control form-control-lg") }}
+        {% endif %}
+    
+    </div>
+    <div class="form-group" style="width: 700px;">
+        {{ form.place.label(class="form-control-label") }}
+        {% if form.place.errors %}
+            {{ form.place(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.place.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.place(class="form-control form-control-lg") }}
+        {% endif %}
+        </div>
+        <div class="form-group" style="width: 700px;">
+            {{ form.mobile.label(class="form-control-label") }}
+            {% if form.mobile.errors %}
+                {{ form.mobile(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.mobile.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.mobile(class="form-control form-control-lg") }}
+            {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.pic.label() }}
+            {{ form.pic(class="form-control-file") }}
+            {% if form.pic.errors %}
+                {% for error in form.pic.errors %}
+                    <span>{{ error }}</span></br>
+                {% endfor %}
+            {% endif %}
+                </div>
+            
+    <div class="form-group" style="width: 700px;">
+        {{ form.submit(class="btn btn-outline-info") }}
+
+    </div>
+   
+</form>
+</html>
+{% endblock%}

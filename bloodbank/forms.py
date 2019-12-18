@@ -3,7 +3,7 @@ from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField, TextField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from bloodbank.models import Gallery,Feedback, Hospitals,User
+from bloodbank.models import Gallery,Feedback, Hospitals,User, Campadd
 from flask_login import current_user
 
 
@@ -109,3 +109,16 @@ class Requestresetform(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError('There is no account with that email. You must register first.')
+
+
+
+class Camp(FlaskForm):
+    date = StringField('Date',render_kw={"placeholder": "dd-mm-yyyy"})
+                
+    desc = StringField('Description',validators=[ Length(min=2, max=20)])
+    place= StringField('Place',
+                           validators=[ Length(min=2, max=20)])
+    mobile = StringField('Mobile',
+                           validators=[ Length(min=2, max=20)])
+    pic = FileField('Upload Picture', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Add')
