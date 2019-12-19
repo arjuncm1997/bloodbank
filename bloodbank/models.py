@@ -48,7 +48,6 @@ class Feedback(db.Model):
     phone= db.Column(db.Integer)
     subject= db.Column(db.VARCHAR)
     message= db.Column(db.VARCHAR)
-    usertype= db.Column(db.VARCHAR)
 
 class Hospitals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -74,3 +73,11 @@ class Campadd(db.Model):
     place = db.Column(db.String(200))
     image = db.Column(db.String(20), nullable=False, default='default.jpg')
 
+   
+class Request(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name= db.Column(db.VARCHAR)
+    email= db.Column(db.VARCHAR)
+    phone= db.Column(db.Integer)
+    subject= db.Column(db.VARCHAR)
+    message= db.Column(db.VARCHAR)

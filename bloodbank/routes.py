@@ -3,7 +3,7 @@ from flask import Flask, flash, session
 from flask import render_template, flash, redirect, request, abort, url_for
 from bloodbank import app,db, bcrypt,  mail
 from bloodbank.forms import Addimage,Addhospitals,Register,Feedback, LoginForm,Accountform,Accountform1,Changepassword, Requestresetform, Camp
-from bloodbank.models import Gallery,Feedback, Hospitals,User,Notification, Campadd
+from bloodbank.models import Gallery,Feedback, Hospitals,User,Notification, Campadd,Request
 from flask_login import login_user, current_user, logout_user, login_required
 from PIL import Image
 from random import randint
@@ -85,7 +85,7 @@ def feedback():
         phone= request. form['Phone']
         subject= request. form['Subject']
         message= request. form['Message']
-        new = Feedback(name=name,email=email,phone=phone,subject=subject,message=message,usertype= 'public')
+        new = Feedback(name=name,email=email,phone=phone,subject=subject,message=message)
         try:
             db.session.add(new)
             db.session.commit()
@@ -94,6 +94,7 @@ def feedback():
         except:
             return 'not add'  
     return render_template('index.html')
+
 
 
 @app.route('/uindex',methods=['POST','GET'])
@@ -105,7 +106,7 @@ def uindex():
         phone= request. form['Phone']
         subject= request. form['Subject']
         message= request. form['Message']
-        new = Feedback(name=name,email=email,phone=phone,subject=subject,message=message,usertype= 'user')
+        new = Request(name=name,email=email,phone=phone,subject=subject,message=message)
         try:
             db.session.add(new)
             db.session.commit()
@@ -180,16 +181,12 @@ def layout():
     form=Accountform()
     return render_template("layout.html",form=form)
 
-@app.route('/userfeedback')
-@login_required
-def userfeedback():
-    feedback = Feedback.query.filter_by(usertype= 'user').all()
-    return render_template('userfeedback.html',feedback=feedback)
+
 
 
 @app.route('/publicfeedback')
 def publicfeedback():
-    feedback = Feedback.query.filter_by(usertype= 'public').all()
+    feedback = Feedback.query.all()
     return render_template('userfeedback.html',feedback=feedback)
 
 
@@ -528,4 +525,9 @@ def campupdate(id):
 def hospitalview():
     hosp=Hospitals.query.all()
     return render_template('hospitalview.html',hosp=hosp)
-    
+
+@app.route('/userrequest')
+@login_required
+def userrequest():
+    request=Request.query.all()
+    return render_template('userrequest.html',req=request)

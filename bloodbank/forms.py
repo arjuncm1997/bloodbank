@@ -3,7 +3,7 @@ from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField, TextField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from bloodbank.models import Gallery,Feedback, Hospitals,User, Campadd
+from bloodbank.models import Gallery,Feedback, Hospitals,User, Campadd, Request
 from flask_login import current_user
 
 
@@ -122,3 +122,4 @@ class Camp(FlaskForm):
                            validators=[ Length(min=2, max=20)])
     pic = FileField('Upload Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Add')
+

@@ -15,7 +15,7 @@
                     <h1><small class="pull-right"></small> Comments </h1>
                   </div> 
                    <div class="comments-list">
-                      {% for feed in feedback %}
+                      {% for req in req %}
 
 
                        <div class="media">
@@ -24,12 +24,12 @@
                             </a>
                             <div class="media-body">
                                 
-                              <h3 class="media-heading user_name">Name: {{feed.name}}
+                              <h3 class="media-heading user_name">Name: {{req.name}}
                               </h3>
-                              <h5>Email: {{feed.email}}</h5>
-                              <h5>Phone: {{feed.phone}}</h5> 
-                              <h5>Subject: {{feed.subject}}</h5> 
-                              <h5>Message: {{feed.message}}</h5>
+                              <h5>Email: {{req.email}}</h5>
+                              <h5>Phone: {{req.phone}}</h5> 
+                              <h5>Subject: {{req.subject}}</h5> 
+                              <h5>Message: {{req.message}}</h5>
                             </div>
                           </div>
                     {% endfor %}
