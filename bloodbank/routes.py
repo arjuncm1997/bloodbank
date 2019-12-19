@@ -187,7 +187,7 @@ def layout():
 @app.route('/publicfeedback')
 def publicfeedback():
     feedback = Feedback.query.all()
-    return render_template('userfeedback.html',feedback=feedback)
+    return render_template('publicfeedback.html',feedback=feedback)
 
 
 def random_with_N_digits(n):
