@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Blood Bank</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Medic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	
+	<!--// Meta tag Keywords -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href="../static/css/bootstrap.css">
+	<!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="../static/css/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //Custom-Files -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Web-Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<!-- //Web-Fonts -->
+
+</head>
+
+<body>
+	<!-- header -->
+	<header>
+		<!-- top-bar -->
+		
+	</header>
+	<!-- //top-bar -->
+
+	<!-- header 2 -->
+	<div id="home">
+		<!-- navigation -->
+		<div class="main-top py-1">
+			<nav class="navbar navbar-expand-lg navbar-light fixed-navi">
+				<div class="container">
+					<!-- logo -->
+					<h1>
+						<a class="navbar-brand font-weight-bold font-italic" href="index.html">
+							<span>Blood</span>Bank
+						</a>
+					</h1>
+					<!-- //logo -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-lg-auto">
+							<li class="nav-item active mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="/uindex">Home
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+							
+							
+				
+                            <li class="nav-item mx-lg-3 my-lg-0 my-3">
+                                    <a class="nav-link" href="#">Notification</a>
+                            </li>
+							
+							<li class="nav-item mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="/account/{{current_user.id}}">{{current_user.name}}</a>
+							</li>
+						</ul>
+						<!-- logout -->
+						<a href="/logout" class="btn btn-info btn-lg" style="background-color: black;border-color: black;">
+							<span class="glyphicon glyphicon-log-out"></span> Log out
+						  </a>
+
+						<!-- //login -->
+					</div>
+				</div>
+			</nav>
+		</div>
+
+	<div class="w3ls-welcome py-5"></div>
+		<div class="container py-xl-5 py-lg-3">
+			
+		</div>
+	</div>
+
+<!---->
+
+
+<div class="box" >
+    <div class="container">
+     	<div class="row">
+            {% for hosp in hosp %}
+			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                   
+					<div class="box-part text-center" style="background-color: rgb(247, 189, 189);
+					border-radius:0;padding:60px 10px;margin:30px 0px;">
+                        
+                        <span class="image-block">
+                            <a class="image-zoom" href="static/picture/{{hosp.image}}" rel="prettyPhoto[gallery]" style="height: 250px;width: 335px;">
+                               <figure>
+                                  <img src="static/picture/{{hosp.image}}" class="img-fluid" alt="" style="height: 70px;width: 70px;">
+                                  <figcaption>
+                                     
+                                  </figcaption>
+                               </figure>
+                            </a>
+                         </span>
+                     
+						<div class="title">
+                            <h3 style="font-size: 40px;">{{hosp.name}}</h3>
+						</div>
+                    
+						<div class="text" style="font-size: 1.5rem; padding-top: 10px;">
+                            Email: {{hosp.email}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Phone: {{hosp.phone}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Place: {{hosp.place}}
+						</div>
+						<div class="text" style="font-size: 1.5rem;">
+                            Pincode: {{hosp.pincode}}
+						</div>
+                        <div style="color: red;font-size: 1.5rem; padding-top: 20px;">
+
+                            Available Blood Group: {{hosp.availgroup}}
+                        </div>
+                        <div style="color: red;font-size: 1.5rem;">
+
+                            Required Blood Group: {{hosp.requiredgroup}}
+                        </div>
+						<!-- <a href="#">Learn More</a> -->
+                      
+                     </div>
+                     
+				</div>	 
+				
+                {%endfor%}
+		
+		</div>		
+    </div>
+</div>
+
+
+
+
+
+<!---->
+
+
+
+
+
+
+
+
+	<footer>
+		<div class="w3ls-footer-grids pt-sm-4 pt-3">
+			<div class="container py-xl-5 py-lg-3">
+				<div class="row">
+					<div class="col-md-4 w3l-footer">
+						<h2 class="mb-sm-3 mb-2">
+							<a href="index.html" class="text-white font-italic font-weight-bold">
+								<span>Blood</span>Bank
+								<i class="fas fa-syringe ml-2"></i>
+							</a>
+						</h2>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+							aperiam,
+							eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					</div>
+					<div class="col-md-4 w3l-footer my-md-0 my-4">
+						<h3 class="mb-sm-3 mb-2 text-white">Address</h3>
+						<ul class="list-unstyled">
+							<li>
+								<i class="fas fa-location-arrow float-left"></i>
+								<p class="ml-4">The company name
+									<span>Lorem ipsum dolor,</span>New York,Morris Park. </p>
+								<div class="clearfix"></div>
+							</li>
+							<li class="my-3">
+								<i class="fas fa-phone float-left"></i>
+								<p class="ml-4">1234567890</p>
+								<div class="clearfix"></div>
+							</li>
+							<li>
+								<i class="far fa-envelope-open float-left"></i>
+								<a href="mailto:info@example.com" class="ml-3">mail@example.com</a>
+								<div class="clearfix"></div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 w3l-footer">
+						<h3 class="mb-sm-3 mb-2 text-white">Quick Links</h3>
+						<div class="nav-w3-l">
+							<ul class="list-unstyled">
+								<li>
+									<a href="/uindex">Home</a>
+								</li>
+								<li class="mt-2">
+									<a href="/uindex">About Us</a>
+								</li>
+								<li class="mt-2">
+									<a href="/uindex">Gallery</a>
+								</li>
+								<li class="mt-2">
+									<a href="contact.html">Contact Us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="border-top mt-5 pt-lg-4 pt-3 pb-lg-0 pb-3 text-center">
+					<p class="copy-right-grids mt-lg-1">© 2018 Medic. All Rights Reserved | Design by
+						<a href="https://w3layouts.com/" target="_blank">W3layouts</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+
+
+	<!-- Js files -->
+	<!-- JavaScript -->
+	<script src="../static/js/jquery-2.2.3.min.js"></script>
+	<!-- Default-JavaScript-File -->
+
+	<!-- banner slider -->
+	<script src="../static/js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<!-- //banner slider -->
+
+	<!-- fixed navigation -->
+	<script src="../static/js/fixed-nav.js"></script>
+	<!-- //fixed navigation -->
+
+	<!-- smooth scrolling -->
+	<script src="../static/js/SmoothScroll.min.js"></script>
+	<!-- move-top -->
+	<script src="../static/js/move-top.js"></script>
+	<!-- easing -->
+	<script src="../static/js/easing.js"></script>
+	<!--  necessary snippets for few javascript files -->
+	<script src="../static/js/medic.js"></script>
+
+	<script src="../static/js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+<!-- Gallery-js -->
+<script src="../static/js/modernizr.custom.97074.js"></script>
+<script src="../static/js/jquery.hoverdir.js"></script>
+<script>
+	$(function () {
+
+		$(' #da-thumbs > li ').each(function () {
+			$(this).hoverdir();
+		});
+
+	});
+</script>
+
+<script src="../static/js/jquery.chocolat.js"></script>
+<link rel="stylesheet" href="../static/css/chocolat.css" type="text/css">
+<!--light-box-files -->
+<script>
+	$(function () {
+		$('.da-thumbs a').Chocolat();
+	});
+</script>
+<!-- Gallery-js -->
+	<!-- //Js files -->
+
+</body>
+
+</html>

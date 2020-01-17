@@ -1,0 +1,177 @@
+{% extends 'admin.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+   
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+
+	<div class="content-section" style="padding-right: 300px;padding-left: 200px; background-color: rgb(211, 136, 136);">
+      <div class="media">
+        <img class="rounded-circle account-img" src="../static/picture/{{current_user.image}}" style="height: 130px;width: 130px;">
+        <div class="media-body">
+          <h1 class="account-heading" style="padding-left: 100px;">   {{ current_user.name }}</h1>
+          <p class="text-secondary" style="padding-left: 100px;padding-top: 20px;">   {{ current_user.email }}</p>
+        </div>
+      </div>
+      <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 40px;">
+    
+     
+		{{ form.hidden_tag() }}
+		
+        <fieldset class="form-group" >
+				<table style="font-size: 1.5rem;line-height: 2;    font-weight: 500;">
+					<tr><th>
+			<legend class="border-bottom mb-4" style="font-size:2.5rem;">Account Info</legend>
+		</th>
+		</tr>
+			<tr style="font-size: 1.5rem;"><td ><div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div></td>
+          <td> <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+				</div>
+			</td>
+			</tr>
+			<tr><td>
+            <div class="form-group">
+                    {{ form.age.label(class="form-control-label") }}
+                    {% if form.age.errors %}
+                        {{ form.age(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.age(class="form-control form-control-lg") }}
+                    {% endif %}
+				</div></td>
+				<td>
+
+				
+                <div class="form-group">
+                        {{ form.address.label(class="form-control-label") }}
+                        {% if form.address.errors %}
+                            {{ form.address(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.address(class="form-control form-control-lg") }}
+                        {% endif %}
+					</div>
+				</td>
+				</tr>
+				<tr><td>
+
+				
+                    <div class="form-group">
+                            {{ form.city.label(class="form-control-label") }}
+                            {% if form.city.errors %}
+                                {{ form.city(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.city.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.city(class="form-control form-control-lg") }}
+                            {% endif %}
+						</div></td>
+						<td>
+
+						
+                        <div class="form-group">
+                                {{ form.state.label(class="form-control-label") }}
+                                {% if form.state.errors %}
+                                    {{ form.state(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.state.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.state(class="form-control form-control-lg") }}
+                                {% endif %}
+							</div>
+						</td>
+						</tr>
+						<tr><td>
+                            <div class="form-group">
+                                    {{ form.mobile.label(class="form-control-label") }}
+                                    {% if form.mobile.errors %}
+                                        {{ form.mobile(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.mobile.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.mobile(class="form-control form-control-lg") }}
+                                    {% endif %}
+								</div></td>
+								<td>
+
+								
+                                <div class="form-group">
+                                        {{ form.picture.label() }}
+                                        {{ form.picture(class="form-control-file") }}
+                                        {% if form.picture.errors %}
+                                            {% for error in form.picture.errors %}
+                                                <span class="text-danger">{{ error }}</span></br>
+                                            {% endfor %}
+                                        {% endif %}
+									</div> </td>
+								</tr>
+							
+								</table>
+       
+        <div class="form-group" >
+            {{ form.submit(class="btn btn-outline-info") }}
+            <small class="text-muted ml-2" style="font-size: 1.2rem;">
+                <a href="/changepassword">Change Password?</a>
+            </small>
+        </div>
+    </fieldset>
+    
+    
+    
+    </form>
+    </div>
+
+
+</body>
+
+{% endblock %}

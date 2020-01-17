@@ -1,24 +1,14 @@
 {% extends 'admin.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-   
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-
-</head>
 <body>
 
 	<div class="content-section" style="padding-right: 300px;padding-left: 200px; background-color: rgb(211, 136, 136);">
       <div class="media">
         <img class="rounded-circle account-img" src="../static/picture/{{current_user.image}}" style="height: 130px;width: 130px;">
         <div class="media-body">
-          <h1 class="account-heading" style="padding-left: 100px;">   {{ current_user.name }}</h1>
+          <h1 class="account-heading" style="padding-left: 100px;">{{ current_user.name }}</h1>
           <p class="text-secondary" style="padding-left: 100px;padding-top: 20px;">   {{ current_user.email }}</p>
         </div>
       </div>
